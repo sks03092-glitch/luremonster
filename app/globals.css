@@ -24,3 +24,9 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+@layer utilities {
+  .container-px {
+    /* 가운데 정렬 + 최대 폭 + 반응형 좌우 여백 */
+    @apply mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8;
+  }
+}
