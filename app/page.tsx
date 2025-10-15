@@ -7,17 +7,17 @@ export default function Home() {
       <section className="grid gap-8 md:grid-cols-2 md:items-center">
         <div className="space-y-6">
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight">
-            초보도 쉬운 낚시 웹/앱 플랫폼
+             낚시의 새로운 시작
           </h1>
           <p className="text-base sm:text-lg text-neutral-600">
-            바이트 감지부터 포인트 정보까지. 모바일에서도 쾌적하게.
+            루어몬스터와 함께하세요!
           </p>
           <div className="flex gap-3">
             <a
               href="#"
               className="inline-flex h-11 items-center justify-center rounded-xl bg-black px-5 text-white hover:opacity-90"
             >
-              지금 시작하기
+              스토어 이동
             </a>
             <a
               href="#"
@@ -45,7 +45,7 @@ export default function Home() {
         <h2 className="text-2xl font-semibold">핵심 기능</h2>
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {[
-            { title: "실시간 바이트 감지", desc: "LED/진동 알림과 로그 저장" },
+            { title: "낚시인 커뮤니티", desc: "실시간 조황, 지역별 어획량, 다양한 정보" },
             { title: "포인트 추천", desc: "날씨/조류/조황 데이터 기반" },
             { title: "장비 가이드", desc: "로드·라인·채비 최적 조합" },
           ].map((f) => (
@@ -59,14 +59,14 @@ export default function Home() {
 
       {/* CTA */}
       <section className="rounded-2xl border p-8 sm:p-12 text-center">
-        <h2 className="text-2xl sm:text-3xl font-semibold">지금 바로 테스트 해보기</h2>
-        <p className="mt-2 text-neutral-600">가입 없이 데모를 이용할 수 있어요.</p>
+        <h2 className="text-2xl sm:text-3xl font-semibold">루어몬스터 Lure talk Beta.ver </h2>
+        <p className="mt-2 text-neutral-600">Beta Taster가 되어 이용후기를 남겨주세요!</p>
         <div className="mt-6">
           <a
             href="#"
             className="inline-flex h-11 items-center justify-center rounded-xl bg-black px-6 text-white hover:opacity-90"
           >
-            데모 접속
+            Lure Talk GO!
           </a>
         </div>
       </section>

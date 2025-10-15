@@ -1,12 +1,16 @@
-import type { Metadata } from "next";
 import "./globals.css";
 import Link from "next/link";                 // ✅ Link import
 import { MobileNav } from "@/components/mobilenav"; // ✅ 파일 경로 일치 확인 (소문자/대문자)
 
-export const metadata: Metadata = {
+// app/layout.tsx
+export const metadata = {
   title: "LureMonster",
-  description: "루어몬스터 – 반응형 낚시 웹/앱 플랫폼",
+  description: "쉬운 낚시 웹/앱 플랫폼",
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
+
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
