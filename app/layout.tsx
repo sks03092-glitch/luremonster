@@ -1,42 +1,39 @@
-import "./globals.css";
-import Link from "next/link";                 // ✅ Link import
-import { MobileNav } from "@/components/mobilenav"; // ✅ 파일 경로 일치 확인 (소문자/대문자)
-
 // app/layout.tsx
+import "./globals.css";
+import Link from "next/link";
+import { MobileNav } from "@/components/mobilenav";
+
 export const metadata = {
   title: "LureMonster",
   description: "초보도 쉬운 낚시 플랫폼",
-  metadataBase: new URL("https://luremonster.kr"), // 네 기본 도메인
   icons: { icon: "/favicon.ico" },
   openGraph: {
     title: "LureMonster",
     description: "초보도 쉬운 낚시 플랫폼",
     url: "https://luremonster.kr",
     siteName: "LureMonster",
-    images: ["/og.png"], // public/og.png 준비하면 탭/공유 썸네일
+    images: ["/og.png"], // public/og.png 준비 시 공유 썸네일
   },
 };
-
-
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ko">
-      <body className="min-h-dvh bg-white text-neutral-900 antialiased">
+      <body className="min-h-dvh bg-neutral-50 text-neutral-900 antialiased">
         {/* 헤더 */}
-        <header className="sticky top-0 z-50 bg-white/80 backdrop-blur border-b">
+        <header className="sticky top-0 z-50 bg-white/80 backdrop-blur shadow-[0_1px_0_rgba(0,0,0,0.04)]">
           <nav className="container-px h-14 flex items-center justify-between">
-            {/* <a> 대신 Link */}
-            <Link href="/" className="font-semibold">LureMonster</Link>
+            <Link href="/" className="font-bold">
+              <span className="text-brand">Lure</span>Monster
+            </Link>
 
-            {/* 데스크탑 메뉴 */}
             <div className="hidden md:flex gap-6 text-sm">
               <Link href="/about" className="hover:underline">소개</Link>
               <Link href="/services" className="hover:underline">서비스</Link>
               <Link href="/contact" className="hover:underline">문의</Link>
             </div>
 
-            {/* 모바일 메뉴 버튼 */}
+            {/* 모바일 햄버거 */}
             <MobileNav />
           </nav>
         </header>
