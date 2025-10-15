@@ -7,10 +7,10 @@ export default function Home() {
       <section className="grid gap-8 md:grid-cols-2 md:items-center">
         <div className="space-y-6">
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight">
-             낚시의 새로운 시작
+             초보도 쉬운 낚시 플랫폼
           </h1>
           <p className="text-base sm:text-lg text-neutral-600">
-            루어몬스터와 함께하세요!
+             루어몬스터와 함께하세요!
           </p>
           <div className="flex gap-3">
             <a
@@ -30,7 +30,7 @@ export default function Home() {
 
         <div className="relative aspect-video rounded-2xl overflow-hidden border">
           <Image
-            src="/next.svg"    // public/next.svg 기본 파일 사용
+            src="/home logo.svg"    // public/home logo.svg 기본 파일 사용
             alt="앱 미리보기"
             fill
             className="object-contain p-6"

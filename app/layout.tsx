@@ -5,11 +5,18 @@ import { MobileNav } from "@/components/mobilenav"; // ✅ 파일 경로 일치 
 // app/layout.tsx
 export const metadata = {
   title: "LureMonster",
-  description: "쉬운 낚시 웹/앱 플랫폼",
-  icons: {
-    icon: "/favicon.ico",
+  description: "초보도 쉬운 낚시 플랫폼",
+  metadataBase: new URL("https://luremonster.kr"), // 네 기본 도메인
+  icons: { icon: "/favicon.ico" },
+  openGraph: {
+    title: "LureMonster",
+    description: "초보도 쉬운 낚시 플랫폼",
+    url: "https://luremonster.kr",
+    siteName: "LureMonster",
+    images: ["/og.png"], // public/og.png 준비하면 탭/공유 썸네일
   },
 };
+
 
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
