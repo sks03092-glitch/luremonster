@@ -1,3 +1,4 @@
+// components/ui/sheet.tsx
 "use client";
 import * as React from "react";
 import * as Dialog from "@radix-ui/react-dialog";
@@ -17,16 +18,21 @@ export function SheetContent({
   side?: "left" | "right" | "top" | "bottom";
 }) {
   const sideClasses: Record<string, string> = {
-    left: "left-0 top-0 h-full w-72 border-r animate-in slide-in-from-left",
-    right: "right-0 top-0 h-full w-72 border-l animate-in slide-in-from-right",
-    top: "top-0 left-0 w-full border-b animate-in slide-in-from-top",
-    bottom: "bottom-0 left-0 w-full border-t animate-in slide-in-from-bottom",
+    left: "left-0 top-0 h-full w-72 border-r",
+    right: "right-0 top-0 h-full w-72 border-l",
+    top: "top-0 left-0 w-full border-b",
+    bottom: "bottom-0 left-0 w-full border-t",
   };
   return (
     <Dialog.Portal>
       <Dialog.Overlay className="fixed inset-0 bg-black/30" />
       <Dialog.Content
-        className={cn("fixed bg-white p-6 shadow-xl focus:outline-none", sideClasses[side], className)}
+        className={cn(
+          "fixed bg-white p-6 shadow-xl focus:outline-none",
+          "animate-in slide-in-from-left",
+          sideClasses[side],
+          className
+        )}
         {...props}
       />
     </Dialog.Portal>
