@@ -1,28 +1,30 @@
 {
   "compilerOptions": {
-    "target": "ESNext",
+    "target": "esnext",
     "lib": [
       "dom",
       "dom.iterable",
       "esnext"
     ],
-    "allowJs": false,
+    "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
+    "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "esModuleInterop": true,
-    "module": "ESNext",
-    "moduleResolution": "Bundler",
+    "module": "esnext",
+    "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "incremental": true,
+    // ✅ 요 아래 두 줄이 핵심이야!
     "baseUrl": ".",
     "paths": {
       "@/*": [
         "./*"
       ]
     },
+    "incremental": true,
     "plugins": [
       {
         "name": "next"

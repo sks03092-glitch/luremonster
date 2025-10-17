@@ -26,3 +26,47 @@ html {
 .container {
   @apply mx-auto max-w-7xl px-6 sm:px-8;
 }
+
+/* ===========================
+   Parallax & Glossy Add-ons
+   =========================== */
+
+/* 더 넓은 부드러운 펄스(구체 용) */
+@keyframes soft-pulse-wide {
+  0%   { opacity: .5; transform: translate3d(0,0,0) scale(1); }
+  25%  { opacity: .7; transform: translate3d(18px,-26px,0) scale(1.06); }
+  50%  { opacity: .85; transform: translate3d(-22px,18px,0) scale(1.1); }
+  75%  { opacity: .7; transform: translate3d(14px,22px,0) scale(1.04); }
+  100% { opacity: .5; transform: translate3d(0,0,0) scale(1); }
+}
+.animate-soft-pulse-wide {
+  animation: soft-pulse-wide 12s ease-in-out infinite;
+}
+
+/* 글로시 라이트 스윕(빛 반사) */
+@keyframes glossy-sweep {
+  0%   { transform: translateX(-120%) rotate(8deg); opacity: 0; }
+  10%  { opacity: .35; }
+  50%  { transform: translateX(0%) rotate(8deg); opacity: .45; }
+  90%  { opacity: .25; }
+  100% { transform: translateX(120%) rotate(8deg); opacity: 0; }
+}
+.glossy-overlay::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    100deg,
+    rgba(255,255,255,0) 10%,
+    rgba(255,255,255,.65) 50%,
+    rgba(255,255,255,0) 90%
+  );
+  filter: blur(2px);
+  mix-blend-mode: screen; /* 하이라이트 느낌 */
+  transform: translateX(-120%) rotate(8deg);
+  animation: glossy-sweep 5.5s ease-in-out infinite;
+}
+
+/* 컨테이너 헬퍼가 없다면 유지/추가 (이미 있으면 중복 X) */
+.container { max-width: 80rem; margin-left: auto; margin-right: auto; padding-left: 1.5rem; padding-right: 1.5rem; }
