@@ -13,14 +13,16 @@
     "isolatedModules": true,
     "jsx": "preserve",
 
-    // ⬇⬇⬇ 중요: 별칭 설정
+    // ⭐️ 경로 별칭 설정
     "baseUrl": ".",
     "paths": {
       "@/*": ["./*"],
-      "@/components/*": ["app/components/*"],
-      "@/sections/*":    ["app/components/sections/*"],
-      "@/ui/*":          ["app/ui/*"],
-      "@/lib/*":         ["lib/*"]
+
+      // (원하면 아래처럼 세분화도 가능하지만 필수는 아님)
+      "@/components/*": ["components/*"],
+      "@/components/sections/*": ["components/sections/*"],
+      "@/ui/*": ["app/ui/*"],
+      "@/lib/*": ["lib/*"]
     }
   },
   "include": [
