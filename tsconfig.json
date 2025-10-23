@@ -1,47 +1,33 @@
-// tsconfig.json
 {
   "compilerOptions": {
-    "target": "ES2017",
-    "lib": [
-      "ES2017",
-      "DOM"
-    ],
-    "module": "esnext",
-    "moduleResolution": "bundler",
-    "strict": true,
-    "jsx": "preserve",
-    "baseUrl": ".",
-    "paths": {
-      "@/*": [
-        "./*"
-      ],
-      "@/lib/*": [
-        "app/lib/*"
-      ],
-      "@/components/*": [
-        "app/components/*"
-      ]
-    },
+    "target": "ES2022",
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
+    "strict": true,
     "noEmit": true,
-    "incremental": true,
     "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ]
+    "jsx": "preserve",
+
+    // ⬇⬇⬇ 중요: 별칭 설정
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./*"],
+      "@/components/*": ["app/components/*"],
+      "@/sections/*":    ["app/components/sections/*"],
+      "@/ui/*":          ["app/ui/*"],
+      "@/lib/*":         ["lib/*"]
+    }
   },
   "include": [
     "next-env.d.ts",
-    ".next/types/**/*.ts",
     "**/*.ts",
-    "**/*.tsx"
+    "**/*.tsx",
+    ".next/types/**/*.ts"
   ],
-  "exclude": [
-    "node_modules"
-  ]
+  "exclude": ["node_modules"]
 }
