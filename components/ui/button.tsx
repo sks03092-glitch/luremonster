@@ -33,7 +33,7 @@ const buttonVariants = cva(
         ].join(" "),
       },
       size: {
-        default: "h-12 px-5", // 기존 대비 10px 큼
+        default: "h-12 px-5",
         sm: "h-10 px-4",
         lg: "h-14 px-6",
         icon: "h-12 w-12",

@@ -1,10 +1,11 @@
 // components/mobilenav.tsx
 "use client";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Button } from "@/components/ui/button";
+
+import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
+import { Button } from "./ui/button";
 import { Menu } from "lucide-react";
 
-export function MobileNav() {
+export default function MobileNav() {
   return (
     <div className="md:hidden">
       <Sheet>
@@ -13,6 +14,7 @@ export function MobileNav() {
             <Menu className="size-5" />
           </Button>
         </SheetTrigger>
+
         <SheetContent side="left" className="w-72">
           <nav className="mt-10 grid gap-4 text-base">
             <a href="/about" className="hover:underline">소개</a>

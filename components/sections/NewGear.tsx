@@ -31,17 +31,12 @@ export function NewGear() {
                          transition-all overflow-hidden"
               onClick={() => console.log(`clicked ${it.key}`)}
             >
-              {/* 빈 카드처럼 보이도록 내부 여백/가이드 */}
               <div className="absolute inset-0 bg-gradient-to-br from-white via-white to-[#FFF3EA]" />
               <div className="absolute inset-0 pointer-events-none rounded-3xl ring-1 ring-black/5" />
-
-              {/* 내용(타이포) */}
               <div className="absolute left-6 bottom-6">
                 <div className="text-lg font-bold text-neutral-900">{it.title}</div>
                 <div className="text-sm text-neutral-600 mt-1">{it.desc}</div>
               </div>
-
-              {/* 호버 오렌지 글로우 */}
               <div className="absolute -inset-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
                 <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[420px] w-[420px] rounded-full bg-brand/20 blur-3xl" />
               </div>

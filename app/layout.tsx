@@ -1,6 +1,8 @@
+// app/layout.tsx
 import "./globals.css";
 import type { Metadata } from "next";
 import Link from "next/link";
+import { MobileMenu } from "../components/ui/MobileMenu"; // ✅ 상대경로 확정
 
 export const metadata: Metadata = {
   title: "LureMonster",
@@ -12,8 +14,8 @@ export const metadata: Metadata = {
     description: "쉽고 재밌게 즐기는 낚시 플랫폼",
     url: "https://luremonster.kr",
     siteName: "LureMonster",
-    images: ["/og.png"],
-  },
+    images: ["/og.png"]
+  }
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -26,10 +28,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <span className="text-brand font-semibold">Lure</span>Monster
             </Link>
             <div className="hidden md:flex gap-6 text-sm">
-              <a href="#features" className="hover:underline">소개</a>
-              <a href="#store" className="hover:underline">서비스</a>
-              <a href="#cta" className="hover:underline">문의</a>
+              <Link href="/about" className="hover:underline">소개</Link>
+              <Link href="/services" className="hover:underline">서비스</Link>
+              <Link href="/contact" className="hover:underline">문의</Link>
             </div>
+            <MobileMenu />
           </nav>
         </header>
 

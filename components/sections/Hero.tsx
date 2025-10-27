@@ -1,62 +1,52 @@
+// components/sections/Hero.tsx
 "use client";
 
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import { STORE_URL } from "@/lib/config"; // ✅ 스토어 URL 설정값 import
+import { STORE_URL } from "../../app/lib/config";
 
 export function Hero() {
   const ref = useRef<HTMLDivElement | null>(null);
 
-  // 스크롤 패럴랙스 제어
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "end start"],
   });
 
-  // 🎢 Parallax 3단 구성
-  const layerBackY = useTransform(scrollYProgress, [0, 1], ["100%", "100%"]); // 느림
-  const layerMidY = useTransform(scrollYProgress, [0, 1], ["0%", "24%"]); // 중간
-  const layerFrontY = useTransform(scrollYProgress, [0, 1], ["0%", "-28%"]); // 반대방향
+  const layerBackY  = useTransform(scrollYProgress, [0, 1], ["100%",  "100%"]);
+  const layerMidY   = useTransform(scrollYProgress, [0, 1], ["0%",  "24%"]);
+  const layerFrontY = useTransform(scrollYProgress, [0, 1], ["0%", "-28%"]);
 
-  const illustrationSrc = "/hero_illustration.svg"; // ✅ SVG or PNG 파일
+  const illustrationSrc = "/hero_illustration.svg";
 
   return (
     <section ref={ref} className="relative overflow-hidden bg-[#FFF9F5]">
-      {/* === 레이어 1: 오렌지 그라데이션 (가장 뒤) === */}
       <motion.div
         aria-hidden
         style={{ y: layerBackY }}
         className="absolute inset-0 bg-gradient-to-br from-[#FFE4CC] via-[#FFD5B0] to-[#FFF3E5] opacity-30"
       />
-
-      {/* === 레이어 2: 큰 구체 (중간 속도, 애니메이션 범위 크게) === */}
       <motion.div
         aria-hidden
         style={{ y: layerMidY }}
-        className="absolute -left-[180px] top-[40px] h-[480px] w-[480px] rounded-full bg-[#FFB888]/60 blur-3xl animate-soft-pulse-wide"
+        className="absolute -left-100 top-10 h-[30px] w-[200px] rounded-full bg-[#FFB888]/60 blur-1xl animate-soft-pulse-wide"
       />
-
-      {/* === 레이어 3: 작은 구체 (앞, 반대 방향으로 더 크게) === */}
       <motion.div
         aria-hidden
         style={{ y: layerFrontY }}
-        className="absolute right-[-200px] bottom-[-180px] h-[720px] w-[720px] rounded-full bg-[#FFD9BE]/50 blur-3xl animate-soft-pulse-wide"
+        className="absolute right-[-140px] bottom-[-140px] h-[680px] w-[680px] rounded-full bg-[#FFD9BE]/50 blur-1xl animate-soft-pulse-wide"
       />
-
-      {/* === 글로시 반사 효과 === */}
       <div className="absolute inset-0 glossy-overlay" aria-hidden />
 
-      {/* === 콘텐츠 === */}
       <div className="container relative flex flex-col-reverse lg:flex-row items-center justify-between py-24 lg:py-32 gap-12">
-        {/* 텍스트 블록 */}
         <motion.div
           initial={{ opacity: 0, x: -30 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
           className="text-center lg:text-left max-w-xl"
         >
-          <h1 className="text-4xl sm:text-4xl lg:text-5xl font-extrabold leading-snug text-neutral-900">
+          <h1 className="text-4xl sm:text-4xl lg:text-4.5xl font-extrabold leading-snug text-neutral-900">
             쉽고 재밌게 즐기는 낚시<br />
             초보부터 전문가까지 한곳에!
           </h1>
@@ -65,7 +55,6 @@ export function Hero() {
           </p>
 
           <div className="mt-8 flex justify-center lg:justify-start gap-4">
-            {/* ✅ 수정된 부분: 스토어 이동 버튼 */}
             <a
               href={STORE_URL}
               target="_blank"
@@ -76,7 +65,6 @@ export function Hero() {
             >
               스토어 이동
             </a>
-
             <a
               href="#features"
               className="inline-flex items-center justify-center px-7 py-3.5 text-lg font-semibold rounded-2xl
@@ -88,7 +76,6 @@ export function Hero() {
           </div>
         </motion.div>
 
-        {/* 일러스트 이미지 */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
