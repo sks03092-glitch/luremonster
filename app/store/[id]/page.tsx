@@ -188,8 +188,7 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
               style={{ backgroundColor: "#03C75A" }}
             >
               <div className="flex items-center justify-center">
-                <NPayLogo />
-                <span className="text-white text-xl font-bold ml-1 pt-1">구매하기</span>
+                <span className="text-white text-xl font-bold ml-1 pt-1">N스마트스토어에서 구매하기</span>
               </div>
               <ExternalLink className="absolute right-6 text-white/70 w-5 h-5" />
             </button>
