@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     description: "쉽고 재밌게 즐기는 낚시 플랫폼",
     url: "https://luremonster.kr",
     siteName: "LureMonster",
-    images: ["/og.png"],
+    images: ["/og.jpg"],
     type: "website",
   },
 };
