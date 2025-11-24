@@ -4,6 +4,7 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
+import { STORE_URL } from "../../app/lib/config"; // ✅ 스토어 URL 중앙관리 값 사용
 
 export function MobileMenu() {
   const [open, setOpen] = useState(false);
@@ -80,14 +81,18 @@ export function MobileMenu() {
                 <Link href="/contact" onClick={() => setOpen(false)} className="block rounded-xl px-3 py-3 text-base hover:bg-black/5">문의</Link>
 
                 <div className="mt-6 grid grid-cols-2 gap-3">
+                  {/* ✅ 스토어 이동: 실제 스토어 URL 새 탭 오픈 */}
                   <a
-                    href="#store"
+                    href={STORE_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     onClick={() => setOpen(false)}
                     className="inline-flex items-center justify-center rounded-2xl px-4 py-3
                                bg-brand/90 text-white font-semibold hover:bg-brand transition-all"
                   >
                     스토어 이동
                   </a>
+
                   <a
                     href="#features"
                     onClick={() => setOpen(false)}
