@@ -1,14 +1,15 @@
+// app/store/category/[slug]/page.tsx
+
 "use client";
 
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-// ✅ 경로 수정: ../../../ 대신 @/app/ 을 사용하면 파일 위치가 바뀌어도 오류가 안 납니다.
 import { products } from "@/app/lib/data"; 
 import { motion } from "framer-motion";
 import { ArrowLeft, ArrowRight } from "lucide-react";
+import { use } from "react"; // ✅ use 훅 추가
 
-// URL의 slug를 한글 이름으로 보여주기 위한 맵핑
 const categoryNames: Record<string, string> = {
   rod: "낚시대",
   reel: "릴",
@@ -18,15 +19,17 @@ const categoryNames: Record<string, string> = {
   boat: "보트용품",
 };
 
-export default function CategoryPage({ params }: { params: { slug: string } }) {
-  const categoryId = params.slug;
+// ✅ 타입 수정: Promise<{ slug: string }>
+export default function CategoryPage({ params }: { params: Promise<{ slug: string }> }) {
+  
+  // ✅ use()를 사용하여 비동기 params 언래핑
+  const { slug } = use(params);
+
+  const categoryId = slug;
   const categoryName = categoryNames[categoryId];
 
-  // 1. 해당 카테고리에 맞는 상품만 필터링
-  // products를 제대로 불러오게 되면 p 에러(any 형식)는 자동으로 사라집니다.
   const filteredProducts = products.filter((p) => p.categoryId === categoryId);
 
-  // 카테고리가 정의되지 않은 것이면 404
   if (!categoryName) {
     return notFound();
   }
@@ -98,7 +101,6 @@ export default function CategoryPage({ params }: { params: { slug: string } }) {
             ))}
           </div>
         ) : (
-          /* 상품이 없을 때 보여줄 화면 */
           <div className="py-20 text-center rounded-3xl bg-neutral-50 border border-dashed border-neutral-200">
             <div className="text-4xl mb-4">🎣</div>
             <h3 className="text-lg font-bold text-neutral-900">아직 등록된 상품이 없어요.</h3>

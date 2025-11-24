@@ -1,17 +1,26 @@
-"use client";
+// app/store/[id]/page.tsx
+
+"use client"; // 이 파일은 클라이언트 컴포넌트여도, params는 비동기로 처리하는 것이 안전합니다.
 
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { products } from "../../lib/data"; // 1단계에서 만든 데이터 불러오기
+import { products } from "../../lib/data"; 
 import { motion } from "framer-motion";
 import { ArrowLeft, Check, ShoppingBag, ExternalLink } from "lucide-react";
+import { use } from "react"; // ✅ React 19/Next.js 15 호환을 위해 use 훅 사용 권장, 혹은 async/await 사용
 
-export default function ProductDetailPage({ params }: { params: { id: string } }) {
-  // 주소창의 id(예: shimano-201)와 일치하는 상품 데이터를 찾습니다.
-  const product = products.find((p) => p.id === params.id);
+// ✅ 타입 정의 수정: params를 Promise로 감싸줍니다.
+export default function ProductDetailPage({ params }: { params: Promise<{ id: string }> }) {
+  
+  // ✅ params가 Promise이므로 use()를 쓰거나 await를 써야 하는데, 
+  // 클라이언트 컴포넌트("use client")에서는 `use(params)`가 가장 깔끔한 최신 방식입니다.
+  const { id } = use(params);
 
-  // 상품이 없으면 404 페이지를 띄웁니다.
+  // 주소창의 id와 일치하는 상품 찾기
+  const product = products.find((p) => p.id === id);
+
+  // 상품이 없으면 404 페이지
   if (!product) {
     return notFound();
   }
@@ -30,7 +39,7 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
 
       <div className="container py-10 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
         
-        {/* 왼쪽: 상품 이미지 슬라이더 (현재는 1장) */}
+        {/* 왼쪽: 상품 이미지 */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -53,7 +62,7 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
           />
         </motion.div>
 
-        {/* 오른쪽: 상품 정보 및 구매 버튼 */}
+        {/* 오른쪽: 상품 정보 */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -80,7 +89,6 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
             {product.detailDescription}
           </p>
 
-          {/* 특징 리스트 */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
             {product.features.map((feature, idx) => (
               <div key={idx} className="flex items-center text-neutral-700 bg-neutral-50 px-4 py-3 rounded-xl border border-neutral-100">
@@ -92,7 +100,6 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
             ))}
           </div>
 
-          {/* 구매 버튼 (네이버 스마트스토어 연동) */}
           <div className="mt-auto">
             <a
               href={product.smartStoreUrl}
@@ -111,7 +118,6 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
         </motion.div>
       </div>
       
-      {/* 하단 상세정보 섹션 (이미지 등) */}
       <section className="container mt-20 pt-16 border-t border-neutral-100 text-center">
         <h3 className="text-2xl font-bold mb-6 text-neutral-900">상세 정보</h3>
         <div className="bg-neutral-50 rounded-3xl p-20 text-neutral-400 border border-neutral-100 border-dashed">
